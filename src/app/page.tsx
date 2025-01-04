@@ -1,113 +1,87 @@
+import React from "react";
+import Link from "next/link";
+
 import Image from "next/image";
 
 export default function Home() {
+  const posts = [
+    {
+        id: '1',
+        title: "Exploring Desert Dreams",
+        description: "A thrilling journey through rugged desert landscapes with a Jeep, where the sand meets the sun.",
+        image: "/jeep1.png",
+        content: "The desert has a unique charm, a vast expanse of golden sands, rocky trails, and towering cliffs. The Jeep is a trusted companion, conquering challenging terrains across the desert. The vast emptiness of the desert offers a sense of serenity, with the whispering wind and warm glow of the setting sun providing an unmatched connection to nature. Desert trails may be tough, but the memories they create are worth every bump in the road",
+    },
+    {
+        id: '2',
+        title: "Off-Roading in the Wilderness",
+        description: "Discover the raw beauty of nature by taking a Jeep into untouched wilderness.",
+        image: "/jeep2.png",
+        content: "Off-roading in the wilderness is an experience like no other. Towering trees, fresh mountain air, and the thrill of navigating uncharted paths make every ride an adventure. The Jeep is more than just a vehicle—it&apos;s a bridge between the adventurer and the natural world.The journey through the wilderness teaches an appreciation for the little things: the crunch of leaves under the tires, the distant call of birds, and the freedom that only nature can provide. Grab a Jeep and explore to truly reconnect with the outdoors!",
+    },
+    {
+        id: '3',
+        title: "A Journey Through Lava Fields",
+        description: "An unforgettable adventure driving through rugged volcanic landscapes with a Jeep.",
+        image: "/jeep3.png",
+        content: "Driving through lava fields is a surreal experience. The stark contrast of black, rugged terrain against the clear blue sky creates a dramatic landscape. The Jeep braves this unique environment, proving no road is too tough for a true adventurer.The lava fields, though harsh, are full of beauty and stories. This journey is a testament to resilience, adventure, and the spirit of pushing boundaries to embrace the unexpected.",
+    },
+    {
+        id: '4',
+        title: "The Forest Calls: A Jeep Adventure",
+        description: "Answering the call of the forest and exploring its hidden trails with a Jeep.",
+        image: "/jeep4.png",
+        content: "The forest is a magical place, full of secrets and surprises. Driving through its winding trails with a Jeep is an adventure like no other. The golden sunlight filtering through the trees, the crunch of gravel under the tires, and the fresh scent of pine create an immersive experience.Each trail is a new story waiting to be discovered. The Jeep handles the twists and turns with ease, making the journey both exciting and safe. Whether an off-roading enthusiast or a nature lover, the forest has something special to offer.",
+    },
+    {
+        id: '5',
+        title: "Sunrise on the Summit",
+        description: "Watching the sunrise from a Jeep rooftop, creating memories that will last a lifetime.",
+        image: "/jeep5.png",
+        content: "There is no better way to greet the day than from the top of a mountain, with the sun rising in the distance. From the Jeep&apos;s roof-top, the sky transforms into a breathtaking canvas of colors.The climb to the summit might be tough, but the view from the top makes it all worthwhile. Moments like these are the essence of off-road adventures, fueling the passion to continue chasing the horizon.",
+    }
+];
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+     
+       <div>
+        
+        
+             {/* hero section */}
+             <div className="relative bg-cover bg-center h-screen items-center justify-center" 
+             style={{backgroundImage:"url('/herojeep.png')",
+              backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
+                  <div className="text-center px-5  sm:px-8 md:px-16 lg:px-32 text-white font-mono">
+                    <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Adventure Awaits: Embrace the Jeep Girl Spirit</h1>
+                    <p className="text-lg sm:text-xl md:text-1xl lg:text-2xl font-medium mb-8">Driven by passion, guided by the road, and fueled by freedom.</p>
+                  </div>
+             </div>
+
+        
+          <div className="text-center mb-12 p-4 pt-12 m-4">
+            
+            <h2 className="text-3xl font-bold md:text-4xl font-mono text-green-950">A Journey Through Nature&apos;s Wonders</h2>
+          </div>
+          <div className="container max-w-7xl mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-12 ">
+            
+        {posts.map((post:any)=>(
+         <div key={post.id} className="mb-8 p-4  bg-white  shadow-cyan-600 shadow-md rounded-lg transition duration-300">
+          <Link className="block group" href={`/blog/${post.id}`}>
+          <div className="relative w-full mb-4 rounded-md">
+             {/* display image */}
+             <Image 
+              src={post.image} alt={post.title} width={1000} height={600}
+              className="w-full h-auto object-cover transform group-hover:scale-90 transition duration-300"/>
+            </div>
+             <h2 className="text-xl  font-semibold md:text-2xl hover:text-cyan-700">{post.title}</h2>
+             <p className="mt-2 text-sm md:text-base text-gray-500">{post.description}</p>
+             
+         </Link>
+         </div>
+         
+        ))}
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        
+       </div>
   );
 }
